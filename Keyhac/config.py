@@ -7,7 +7,7 @@ from keyhac import *
 
 
 def configure(keymap):
-    keymap.editor = r"C:\Users\yi0m0iy\AppData\Local\atom\app-1.11.2\atom.exe"
+    keymap.editor = r"$HOME\AppData\Local\atom\app-1.11.2\atom.exe"
     keymap.setFont( "Noto Sans CJK JP", 12 )
     keymap.setTheme("black")
 
