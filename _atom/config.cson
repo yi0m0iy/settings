@@ -1,0 +1,41 @@
+"*":
+  "autocomplete-python":
+    extraPaths: "C:\\Program Files\\Python35\\Lib\\site-packages;C:\\Users\\yi0m0iy\\AppData\\Roaming\\Python\\Python35\\site-packages"
+    pythonPaths: "C:\\Program Files\\Python35\\python.exe"
+  core:
+    disabledPackages: [
+      "spell-check"
+      "language-gfm"
+    ]
+    projectHome: "C:\\Users\\yi0m0iy\\Work\\Git Project\\"
+    telemetryConsent: "limited"
+  editor:
+    fontFamily: "\"Source Han Code JP\""
+    fontSize: 12
+    showIndentGuide: true
+    showInvisibles: true
+  "exception-reporting":
+    userId: "f12fe76f-4b8d-a7f5-bac6-f3694dcf9608"
+  "keyboard-localization":
+    useKeyboardLayout: "ja_JP"
+  "linter-pep8":
+    ignoreErrorCodes: [
+      "E221"
+    ]
+    pep8ExecutablePath: "C:\\Users\\yi0m0iy\\AppData\\Roaming\\Python\\Python35\\Scripts\\pep8.exe"
+  "linter-pyflakes":
+    pyflakesExecutablePath: "C:\\Users\\yi0m0iy\\AppData\\Roaming\\Python\\Python35\\Scripts\\pyflakes.exe"
+  "relative-numbers":
+    showAbsoluteNumbers: true
+    startAtOne: true
+  "vim-mode-plus":
+    ignoreCaseForSearch: true
+    ignoreCaseForSearchCurrentWord: true
+    incrementalSearch: true
+    useClipboardAsDefaultRegister: true
+    useSmartcaseForSearch: true
+    useSmartcaseForSearchCurrentWord: true
+  welcome:
+    showOnStartup: false
+  whitespace:
+    ignoreWhitespaceOnCurrentLine: false
