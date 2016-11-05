@@ -1,5 +1,5 @@
 ﻿chcp 65001
-$global:OutputEncoding = [system.Text.Encoding]::UTF8
+$OutputEncoding = [system.Text.Encoding]::UTF8
 $env:path = @(
   $env:path,
   "$HOME\Software\cmder",
@@ -7,9 +7,9 @@ $env:path = @(
   "C:\Program Files\Python35",
   "$HOME\AppData\Roaming\Python\Python35\Scripts",
   "C:\Program Files\Python35\Scripts",
-  "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\ClangC2\bin\amd64",
-  "$HOME\Software\vim80-kaoriya-win64-8.0.0039-20161016\vim80-kaoriya-win64"
+  "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\ClangC2\bin\amd64"
 ) -join ";"
+$ProjectHome = "$HOME\Work\GitProject"
 
 $negineesan = @"
   Y
@@ -23,7 +23,8 @@ function Prompt {
   }
   Write-VcsStatus
   Write-Host
-  return "λ "
+  Write-Host (Split-Path -Leaf $pwd.Path) -NoNewLine
+  return " λ "
 }
 
 Set-Alias pushdx Push-Location-Ex

@@ -1,35 +1,54 @@
 Param(
   [Parameter(Mandatory=$True,
     position=1)]
-  [string[]]$Path
+  [string]$Path,
 
-  [switch]$recurse
-  [switch]$reverse
+  [string[]]$Include,
+  [string[]]$Exclude,
+  [switch]$Reverse
 )
 
 Push-Location (Split-Path $MyInvocation.MyCommand.Path -parent)
-$script = Convert-Path .\I-LOVE-UTF8-WITHBOM.ps1
+$script = Convert-Path ".\I-LOVE-UTF8-WITHBOM.ps1"
 Pop-Location
 
-foreach ($data in $Path) {
-  if ($recurse) {
-    foreach ($file in Get-ChildItem $data -Recurse) {
-      if (! $file.PSIsContainer) {
-        Set-Bom $file.FullName
-      }
+function Set-Bom {
+  Param(
+    [Parameter(Mandatory=$True,
+      position=1)]
+    [string]$Path,
+
+    [switch]$Reverse
+  )
+  process {
+    if (! $Reverse) {
+      . $script "$Path"
+    } else {
+      . $script -reverse "$Path"
     }
-  } else {
-    Set-Bom (Convert-Path $data)
   }
 }
 
-function Set-Bom($fileinfo) {
-  $fullName = $file.FullName
-  if (! $reverse) {
-    . $script "$fullname"
+foreach ($file in Get-ChildItem $Path -Recurse) {
+  if ($file.PSIsContainer) {
+    continue
+  }
+
+  if ($Include -eq $null) {
+    $isInclude = $True
   } else {
-    . $script -reverse "$fullname"
+    $isInclude = Judge-Str $file.Name -Patterns $Include
+  }
+
+  if ($Exclude -eq $null) {
+    $isExclude = $False
+  } else {
+    $isExclude = Judge-Str $file.Name -Patterns $Exclude -NotLike
+  }
+
+  if ($isInclude -and !$isExclude -and !$Reverse) {
+    Set-Bom $file.FullName
+  } elseif ($isInclude -and !$isExclude -and $Reverse) {
+    Set-Bom $file.FullName -Reverse
   }
 }
-
-Pop-Location

@@ -10,15 +10,12 @@
     Get-ChildItem|Format-Wide -autosize
   }
 }
-
 function Pop-Location-Ex {
   [CmdletBinding()]
   Param()
-
   process {
     Pop-Location
     Get-ChildItem|Format-Wide -autosize
   }
 }
-
 Export-ModuleMember -Function *

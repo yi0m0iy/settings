@@ -7,11 +7,12 @@
       "spell-check"
       "language-gfm"
     ]
-    projectHome: "C:\\Users\\yi0m0iy\\Work\\Git Project\\"
+    projectHome: "C:\\Users\\yi0m0iy\\Work\\GitProject\\"
     telemetryConsent: "limited"
   editor:
     fontFamily: "\"Source Han Code JP\""
     fontSize: 12
+    nonWordCharacters: "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-…、。「」【】『』（）！？　てにをはがのともへでや"
     showIndentGuide: true
     showInvisibles: true
   "exception-reporting":
@@ -27,8 +28,8 @@
     pyflakesExecutablePath: "C:\\Users\\yi0m0iy\\AppData\\Roaming\\Python\\Python35\\Scripts\\pyflakes.exe"
   "relative-numbers":
     showAbsoluteNumbers: true
-    startAtOne: true
   "vim-mode-plus":
+    highlightSearch: true
     ignoreCaseForSearch: true
     ignoreCaseForSearchCurrentWord: true
     incrementalSearch: true

@@ -3,7 +3,7 @@ from keyhac import cblister_FixedPhrase
 
 def configure(keymap):
     keymap.editor = r"$HOME\AppData\Local\atom\app-1.11.2\atom.exe"
-    keymap.setFont("源ノ角ゴシック Code JP L It", 12)
+    keymap.setFont("源ノ角ゴシック Code JP L", 12)
     keymap.setTheme("black")
 
     keymap.replaceKey("Space", "LShift")

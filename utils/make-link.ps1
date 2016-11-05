@@ -9,7 +9,14 @@ Param(
   [Alias('link')]
   [string]$linkDir,
 
-  [switch]$reflesh
+  [string[]]$Include,
+  [string[]]$Exclude,
+
+  [ValidateSet(
+    "Link",
+    "File",
+    "None")]
+  [string[]]$replace="None"
 )
 
 $fullSource = Resolve-Path $sourceDir
@@ -18,6 +25,22 @@ $fullLink   = Resolve-Path $linkDir
 Push-Location $fullSource
 
 foreach ($file in (Get-ChildItem $sourceDir -Recurse)) {
+  if ($Include -eq $null) {
+    $isInclude = $True
+  } else {
+    $isInclude = Judge-Str $file.Name -Patterns $Include
+  }
+
+  if ($Exclude -eq $null) {
+    $isExclude = $False
+  } else {
+    $isExclude = Judge-Str $file.Name -Patterns $Exclude -NotLike
+  }
+
+  if (!$isInclude -or $isExclude) {
+    continue
+  }
+
   $sourcePath   = $file.FullName
   $relativePath = Resolve-Path -Relative $sourcePath
   $linkPath   = Join-Path $fullLink $relativePath
@@ -25,13 +48,17 @@ foreach ($file in (Get-ChildItem $sourceDir -Recurse)) {
     #need Administor
     New-Item "$linkPath" -value "$sourcePath" -ItemType SymbolicLink
     continue
-  } elseif (!$reflesh) {
+  } elseif ($replace -eq "None") {
     continue
   }
+
   $fileInfo = Get-Item $linkPath
-  if ($fileInfo.LinkType -eq "SymbolicLink") {
-    $fileInfo.Delete()
-    New-Item "$linkPath" -value "$sourcePath" -ItemType SymbolicLink
+  $isLink = $fileInfo.LinkType -ne $null
+  $isFile = !$fileInfo.PSIsContainer -and !$fileInfo.Target
+  if (($replace -eq "Link") -and $isLink) {
+    New-Item "$linkPath" -value "$sourcePath" -ItemType SymbolicLink -Force
+  } elseif(($replace -eq "File") -and $isFile) {
+    New-Item "$linkPath" -value "$sourcePath" -ItemType SymbolicLink -Force
   }
 }
 
