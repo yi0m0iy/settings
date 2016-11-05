@@ -15,12 +15,34 @@ $negineesan = @"
   Y
 川▽▽
 "@
-function Prompt {
-  if($?) {
-    Write-Host ($negineesan + "はい") -NoNewLine -ForegroundColor "Green"
-  } else {
-    Write-Host ($negineesan + "はいじゃないが") -NoNewLine -ForegroundColor "Red"
+
+$negiRSS = "https://queryfeed.net/tw?q=%40negineesan_bot"
+$isOnline = Test-Connection queryfeed.net -count 1
+if ($isOnline) {
+  filter private:Get-Word {
+    if ($_.description.ChildNodes.Value -match "<.*>(.*)<.*>") {
+      return $matches[1]
+    }
   }
+  $rss = New-Object xml
+  $rss.Load($negiRSS)
+  $negiWords = $rss.rss.channel.item|Get-Word
+}
+
+function Prompt {
+  if ($?) {
+    $word = "はい"
+    $color = "Green"
+  } else {
+    $word = "はいじゃないが"
+    $color = "Red"
+  }
+
+  if ($isOnline -and ((Get-Random 100) -le 5)) {
+    $word = $negiWords[(Get-Random $negiWords.Length)-1]
+  }
+
+  Write-Host ($negineesan + $word) -NoNewLine -ForegroundColor $color
   Write-VcsStatus
   Write-Host
   Write-Host (Split-Path -Leaf $pwd.Path) -NoNewLine
