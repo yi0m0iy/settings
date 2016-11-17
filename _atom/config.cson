@@ -19,6 +19,8 @@
     userId: "f12fe76f-4b8d-a7f5-bac6-f3694dcf9608"
   "keyboard-localization":
     useKeyboardLayout: "ja_JP"
+  linter:
+    errorPanelHeight: 74
   "linter-pep8":
     ignoreErrorCodes: [
       "E221"

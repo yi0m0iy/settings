@@ -1,4 +1,4 @@
-﻿function Judge-Str {
+﻿function Like-Str {
   [CmdletBinding()]
   Param(
     [Parameter(Mandatory=$True,

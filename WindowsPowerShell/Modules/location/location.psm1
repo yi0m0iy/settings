@@ -6,7 +6,7 @@
   )
 
   process {
-    Push-Location $Path
+    Push-Location "$Path"
     Get-ChildItem|Format-Wide -autosize
   }
 }
@@ -18,4 +18,19 @@ function Pop-Location-Ex {
     Get-ChildItem|Format-Wide -autosize
   }
 }
+
+function Set-New-Directory {
+  [CmdletBinding()]
+  Param(
+    [Parameter(Mandatory=$True,
+      Position=1)]
+    [string]$Path
+  )
+
+  process {
+    New-Item -Path "$Path" -ItemType Directory
+    Push-Location-Ex "$Path"
+  }
+}
+
 Export-ModuleMember -Function *

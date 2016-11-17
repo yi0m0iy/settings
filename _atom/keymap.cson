@@ -32,4 +32,9 @@
 # http://flight-manual.atom.io/using-atom/sections/basic-customization/#_cson
 'atom-text-editor.vim-mode-plus.normal-mode':
   ':': 'command-palette:toggle'
-  '/': 'find-and-replace:show'
+
+'atom-text-editor.vim-mode-plus:not(.insert-mode)':
+  '/': 'find-and-replace:toggle'
+
+'atom-text-editor.vim-mode-plus.insert-mode':
+  'ctrl-s': 'custom:save-and-normalmode'

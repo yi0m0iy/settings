@@ -28,13 +28,13 @@ foreach ($file in (Get-ChildItem $sourceDir -Recurse)) {
   if ($Include -eq $null) {
     $isInclude = $True
   } else {
-    $isInclude = Judge-Str $file.Name -Patterns $Include
+    $isInclude = Like-Str $file.Name -Patterns $Include
   }
 
   if ($Exclude -eq $null) {
     $isExclude = $False
   } else {
-    $isExclude = Judge-Str $file.Name -Patterns $Exclude -NotLike
+    $isExclude = Like-Str $file.Name -Patterns $Exclude -NotLike
   }
 
   if (!$isInclude -or $isExclude) {

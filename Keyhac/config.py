@@ -1,4 +1,5 @@
 from keyhac import cblister_FixedPhrase
+import ctypes
 
 
 def configure(keymap):
@@ -26,6 +27,7 @@ def configure(keymap):
     keymap_global["U0-0"]         = "Home"
     keymap_global["U0-4"]         = "End"
     keymap_global["U0-C"]         = keymap.command_ClipboardList
+    keymap_global["U0-E"]         = eject_win
     keymap_global["RW-Back"]       = "Delete"
 
     keymap_atom = keymap.defineWindowKeymap(
@@ -42,3 +44,7 @@ def configure(keymap):
     keymap.cblisters += [
         ("呪文集", cblister_FixedPhrase(sentence))
     ]
+
+
+def eject_win():
+    ctypes.windll.WINMM.mciSendStringW("set cdaudio door open", None, 0, None)
