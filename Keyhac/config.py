@@ -1,5 +1,9 @@
 from keyhac import cblister_FixedPhrase
+from ckit.ckit_misc import getAppDataPath as getapp
+from os.path import join as join_path
 import ctypes
+import csv
+import codecs
 
 
 def configure(keymap):
@@ -36,13 +40,20 @@ def configure(keymap):
     )
     keymap_atom["O-LCtrl"] = "Escape", "L"
 
+    data_path = join_path(getapp(), "Keyhac", "sensitive.csv")
+    with codecs.open(data_path, "r", "utf8") as f:
+        reader = csv.reader(f)
+        sensitive = [tuple(line) for line in reader]
+
     sentence = [
         ("HTML:コメント", "<!-- -->"),
         ("PowerShell:CmdletBinding", "[CmdletBinding()]"),
     ]
 
-    keymap.cblisters += [
-        ("呪文集", cblister_FixedPhrase(sentence))
+    keymap.cblisters = [
+        ("Person", cblister_FixedPhrase(sensitive)),
+        keymap.cblisters[0],
+        ("呪文集", cblister_FixedPhrase(sentence)),
     ]
 
 
