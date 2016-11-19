@@ -5,5 +5,6 @@ Push-Location (Split-Path $MyInvocation.MyCommand.Path -parent)
 .\make-link.ps1 "..\Keyhac" "$HOME\AppData\Roaming\Keyhac\" -Replace File, Link
 .\make-link.ps1 "..\HOME" $HOME -Replace Link
 .\make-link.ps1 "..\_atom" "$HOME\.atom" -Replace Link, File
+.\make-link.ps1 "..\ChgKey" "$HOME\Software\ChgKey" -Replace Link, File
 
 Pop-Location

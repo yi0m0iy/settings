@@ -38,3 +38,7 @@
 
 'atom-text-editor.vim-mode-plus.insert-mode':
   'ctrl-s': 'custom:save-and-normalmode'
+
+'atom-text-editor':
+  'ctrl-j': 'unset!'
+  'ctrl-l': 'unset!'

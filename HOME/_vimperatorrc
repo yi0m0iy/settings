@@ -1,0 +1,14 @@
+set titlestring=Firefox
+
+map H <A-Left>
+map J <C-n>
+map K <C-p>
+map L <A-Right>
+
+noremap j 10<C-e>
+noremap k 10<C-y>
+
+set ignorecase
+set smartcase
+
+set hintchars=ifjklasdhguonmerwc

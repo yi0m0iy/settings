@@ -74,19 +74,6 @@ if ($HighFunctionaly) {
     return " λ "
   }
 
-  Set-Alias pushdx Push-Location-Ex
-  Set-Alias cdx Push-Location-Ex
-  Set-Alias x Push-Location-Ex
-  Set-Alias popdx Pop-Location-Ex
-  Set-Alias cd- Pop-Location-Ex
-  Set-Alias lns New-Symbolic
-  Set-Alias ns New-Symbolic
-  Set-Alias rms Delete-Symbolic
-  Set-Alias ds Delete-Symbolic
-  Set-Alias snd Set-New-Directory
-  Set-Alias mkcd Set-New-Directory
-  Set-Alias eject Eject-CDROM
-
   Start-SshAgent -Quiet
 
   # Chocolatey profile

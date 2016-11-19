@@ -6,6 +6,7 @@
     disabledPackages: [
       "spell-check"
       "language-gfm"
+      "keyboard-localization"
     ]
     projectHome: "C:\\Users\\yi0m0iy\\Work\\GitProject\\"
     telemetryConsent: "limited"
@@ -25,7 +26,7 @@
     ignoreErrorCodes: [
       "E221"
     ]
-    pep8ExecutablePath: "C:\\Users\\yi0m0iy\\AppData\\Roaming\\Python\\Python35\\Scripts\\pep8.exe"
+    pep8ExecutablePath: "C:\\Users\\yi0m0iy\\AppData\\Roaming\\Python\\Python35\\Scripts\\pycodestyle.exe"
   "linter-pyflakes":
     pyflakesExecutablePath: "C:\\Users\\yi0m0iy\\AppData\\Roaming\\Python\\Python35\\Scripts\\pyflakes.exe"
   "relative-numbers":

@@ -13,15 +13,15 @@
   )
 
   process {
-    $command = "New-Item `'$Link`' -value  `'$Source`' -itemtype SymbolicLink"
-    if ($Force) {
-      $command += " -force"
+    if (!$Force) {
+      New-Item $Link -value $Source -itemtype SymbolicLink
+    } else {
+      New-Item $Link -value $Source -itemtype SymbolicLink
     }
-  Start-Process -Verb runas -FilePath "PowerShell" -ArgumentList "-noexit -Command ", $Command
   }
 }
 
-function Delete-Symbolic {
+function Remove-Symbolic {
   [CmdletBinding()]
   Param(
     [Parameter(Mandatory=$True,
@@ -37,4 +37,29 @@ function Delete-Symbolic {
   }
 }
 
-Export-ModuleMember -Function *
+function Get-RealItem {
+  [CmdletBinding()]
+  Param(
+  [Parameter(Mandatory=$True,
+    position=1)]
+  [string]$Path
+  )
+
+  process {
+    $fileInfo = Get-Item $Path
+    while ($fileInfo.Target) {
+      Push-Location (Split-Path $fileInfo.Path -parent)
+      $fileInfo = Get-Item $fileInfo.Target
+      Pop-Location
+    }
+    return $fileInfo
+  }
+}
+
+Set-Alias lns New-Symbolic
+Set-Alias ns New-Symbolic
+Set-Alias rms Remove-Symbolic
+Set-Alias ds Remove-Symbolic
+Set-Alias gri Get-RealItem
+
+Export-ModuleMember -Function * -Alias *

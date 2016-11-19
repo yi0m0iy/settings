@@ -7,4 +7,5 @@
   }
 }
 
-Export-ModuleMember -Function *
+Set-Alias eject Eject-CDROM
+Export-ModuleMember -Function * -Alias *
