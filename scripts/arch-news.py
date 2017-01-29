@@ -8,8 +8,12 @@ date_fmt = "%Y/%m/%d"
 def get_last_reboot():
     import subprocess
     log = subprocess.getoutput("last reboot --time-format iso")
-    last_login = log.split("\n")[0].split()[4]
-    return dateparse(last_login)
+    newest_boot = log.split("\n")[0].split()[4]
+    reboot_time = dateparse(newest_boot)
+    if reboot_time.year == 1970:
+        newest_halt = log.split("\n")[1].split()[5]
+        reboot_time = dateparse(newest_halt)
+    return reboot_time
 
 last_reboot = get_last_reboot()
 responce = feedparse(url)
