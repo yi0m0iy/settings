@@ -1,0 +1,12 @@
+ttp:     file:/cgi-bin/http.cgi?%s
+tp:      file:/cgi-bin/http.cgi?%s
+ttps:    file:/cgi-bin/http.cgi?%s
+tps:     file:/cgi-bin/http.cgi?%s
+google:  file:/cgi-bin/search.cgi?%s
+g:       file:/cgi-bin/search.cgi?%s
+python:  file:/cgi-bin/search.cgi?%s
+p:       file:/cgi-bin/search.cgi?%s
+arch:    file:/cgi-bin/search.cgi?%s
+a:       file:/cgi-bin/search.cgi?%s
+youtube: file:/cgi-bin/search.cgi?%s
+y:       file:/cgi-bin/search.cgi?%s

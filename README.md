@@ -4,6 +4,7 @@
     + _atom
 + シェル
     + WindowsPowerShell
+    + fish
 + キーボードカスタム
     + Keyhac
     + ChgKey
@@ -11,11 +12,12 @@
     + ELECOM_Mouse_Driver
 + 構築用のスクリプト
     + utils
++ 小物スクリプト
+    + scripts
 
 # 環境
-+ Windows10
-+ Macbook Pro7,1
-+ 日本語キーボード
++ Windows10 on MBP7,1(JP keyboard)
++ ArchLinux
 
 # キーカスタムについて
 ## 概要

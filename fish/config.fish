@@ -1,1 +1,3 @@
 screenfetch
+checkupdates
+arch-news
