@@ -2,9 +2,12 @@
 以下のファイルを置いています.
 + エディタ
     + _atom
+    + HOME/_vimrc
 + シェル
     + WindowsPowerShell
     + fish
++ ブラウザ
+    + _w3m
 + キーボードカスタム
     + Keyhac
     + ChgKey
