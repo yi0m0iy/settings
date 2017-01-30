@@ -1,3 +1,7 @@
 screenfetch
-cat $HOME/updates.log
-cat $HOME/arch-news.log
+if test -e /tmp/updates.log
+    cat /tmp/updates.log
+end
+if test -e /tmp/arch-news.log
+    cat /tmp/arch-news.log
+end
