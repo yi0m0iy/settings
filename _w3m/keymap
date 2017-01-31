@@ -2,3 +2,4 @@ keymap T     TAB_GOTO
 # keymap m MOUSE_TOGGLE
 keymap m     EXTERN "cd $HOME/netwalker/movies && youtube-dl %s"
 keymap ESC-m EXTERN_LINK "cd $HOME/netwalker/movies && youtube-dl %s"
+keymap C-c   GOTO file:/cgi-bin/archive.cgi

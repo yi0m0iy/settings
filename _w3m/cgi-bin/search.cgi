@@ -7,7 +7,7 @@ def getquery(params: dict):
 
 
 query = os.environ["QUERY_STRING"].split(":")
-prefix, body = query[0], (":").join(query[1:])
+prefix, body = query[0], ":".join(query[1:])
 if prefix in ["g", "google"]:
     endpoint = "https://google.co.jp/search"
     params = {
